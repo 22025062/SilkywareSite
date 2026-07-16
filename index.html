@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Animations</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Aurora Hero -->
+  <section class="aurora-section" aria-label="Hero">
+    <div class="aurora-bg" aria-hidden="true"></div>
+    <div class="aurora-content">
+      <h1 class="aurora-heading">Background lights are cool you know.</h1>
+      <p class="aurora-sub">And this, is chemical burn.</p>
+      <button class="aurora-btn">Debug now</button>
+    </div>
+  </section>
+
+  <!-- Scroll Animation -->
+  <section class="scroll-section" id="scrollSection" aria-label="Scroll animation demo">
+    <div class="scroll-sticky">
+      <div class="scroll-title" id="scrollTitle">
+        <h1>Unleash the power of
+          <span class="big">Scroll Animations</span>
+        </h1>
+      </div>
+      <div class="card-wrapper" id="cardWrapper">
+        <div class="hero-card">
+          <div class="card-inner">
+            <img
+              src="https://ui.aceternity.com/_next/image?url=%2Flinear.webp&w=3840&q=75"
+              alt="Linear app hero screenshot"
+              draggable="false"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint" id="scrollHint" aria-hidden="true">
+        <span>scroll</span>
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- World Map Section -->
+  <section class="world-map-section animate-on-view" aria-label="Connectivity Map">
+    <div class="world-map-container">
+      <div class="world-map-header">
+        <p class="world-map-title">
+          Remote <span class="world-map-accent" id="connectivityTitle">Connectivity</span>
+        </p>
+        <p class="world-map-subtitle">
+          Break free from traditional boundaries. Work from anywhere, at the comfort of your own studio apartment. Perfect for Nomads and Travellers.
+        </p>
+      </div>
+
+      <div class="world-map-wrapper animate-map-paths">
+        <!-- SVG background map -->
+        <div class="world-map-bg-wrapper">
+          <img src="world-map.svg" class="world-map-bg" alt="World map grid background" draggable="false" />
+        </div>
+
+        <!-- SVG overlays for paths and dynamic points -->
+        <svg viewBox="0 0 800 400" class="world-map-overlay" id="worldMapSvg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0" />
+              <stop offset="5%" stop-color="#0ea5e9" stop-opacity="1" />
+              <stop offset="95%" stop-color="#0ea5e9" stop-opacity="1" />
+              <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <g id="worldMapPaths"></g>
+          <g id="worldMapPoints"></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section animate-on-view" aria-label="Testimonials">
+    <div class="testimonials-container">
+      <div class="testimonials-header">
+        <h2 class="testimonials-title">Trusted by developers worldwide</h2>
+        <p class="testimonials-subtitle">Join thousands of developers who are already building the future with our AI platform</p>
+      </div>
+
+      <div class="testimonials-marquee-wrapper">
+        <div class="marquee-fade-left"></div>
+        <div class="marquee-fade-right"></div>
+        
+        <div class="marquee-container">
+          <div class="marquee-track">
+            <!-- List Copy 1 -->
+            <div class="marquee-list">
+              <!-- Card 1 -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"Using this AI platform has transformed how we handle data analysis. The speed and accuracy are unprecedented."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="Emma Thompson" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">Emma Thompson</h4>
+                    <p class="testimonial-handle">@emmaai</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"The API integration is flawless. We've reduced our development time by 60% since implementing this solution."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="David Park" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">David Park</h4>
+                    <p class="testimonial-handle">@davidtech</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"Finally, an AI tool that actually understands context! The accuracy in natural language processing is impressive."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="Sofia Rodriguez" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">Sofia Rodriguez</h4>
+                    <p class="testimonial-handle">@sofiaml</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4 (Emma copy) -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"Using this AI platform has transformed how we handle data analysis. The speed and accuracy are unprecedented."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="Emma Thompson" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">Emma Thompson</h4>
+                    <p class="testimonial-handle">@emmaai</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 5 (David copy) -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"The API integration is flawless. We've reduced our development time by 60% since implementing this solution."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="David Park" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">David Park</h4>
+                    <p class="testimonial-handle">@davidtech</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 6 (Sofia copy) -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"Finally, an AI tool that actually understands context! The accuracy in natural language processing is impressive."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="Sofia Rodriguez" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">Sofia Rodriguez</h4>
+                    <p class="testimonial-handle">@sofiaml</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- List Copy 2 -->
+            <div class="marquee-list">
+              <!-- Card 1 -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"Using this AI platform has transformed how we handle data analysis. The speed and accuracy are unprecedented."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="Emma Thompson" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">Emma Thompson</h4>
+                    <p class="testimonial-handle">@emmaai</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"The API integration is flawless. We've reduced our development time by 60% since implementing this solution."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="David Park" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">David Park</h4>
+                    <p class="testimonial-handle">@davidtech</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"Finally, an AI tool that actually understands context! The accuracy in natural language processing is impressive."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="Sofia Rodriguez" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">Sofia Rodriguez</h4>
+                    <p class="testimonial-handle">@sofiaml</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4 (Emma copy) -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"Using this AI platform has transformed how we handle data analysis. The speed and accuracy are unprecedented."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="Emma Thompson" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">Emma Thompson</h4>
+                    <p class="testimonial-handle">@emmaai</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 5 (David copy) -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"The API integration is flawless. We've reduced our development time by 60% since implementing this solution."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="David Park" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">David Park</h4>
+                    <p class="testimonial-handle">@davidtech</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 6 (Sofia copy) -->
+              <div class="testimonial-card">
+                <p class="testimonial-text">"Finally, an AI tool that actually understands context! The accuracy in natural language processing is impressive."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" class="testimonial-avatar" alt="Sofia Rodriguez" />
+                  <div class="testimonial-meta">
+                    <h4 class="testimonial-name">Sofia Rodriguez</h4>
+                    <p class="testimonial-handle">@sofiaml</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-accent-line"></div>
+
+    <div class="footer-grid">
+      <!-- Left Info (Logo & Copyright) -->
+      <div class="footer-left animate-on-view" style="--delay: 0.1s;">
+        <!-- FrameIcon SVG -->
+        <svg class="footer-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="18" height="18" x="3" y="3" rx="2"/>
+          <path d="M7 3v18M17 3v18M3 7h18M3 17h18"/>
+        </svg>
+        <p class="footer-copyright">
+          &copy; 2026 Asme. All rights reserved.
+        </p>
+      </div>
+
+      <!-- Links Grid -->
+      <div class="footer-links-grid">
+        <!-- Product Column -->
+        <div class="footer-column animate-on-view" style="--delay: 0.2s;">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="/">Integration</a></li>
+          </ul>
+        </div>
+
+        <!-- Company Column -->
+        <div class="footer-column animate-on-view" style="--delay: 0.3s;">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/faqs">FAQs</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Services</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources Column -->
+        <div class="footer-column animate-on-view" style="--delay: 0.4s;">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/changelog">Changelog</a></li>
+            <li><a href="/brand">Brand</a></li>
+            <li><a href="/help">Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Links Column -->
+        <div class="footer-column animate-on-view" style="--delay: 0.5s;">
+          <h3>Social Links</h3>
+          <ul>
+            <li>
+              <a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/><path d="m10 15 5-3-5-3z"/></svg>
+                Youtube
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dock -->
+  <nav class="dock-root" aria-label="Application dock">
+    <div class="dock-panel" id="dockPanel">
+
+      <div class="dock-item" role="button" tabindex="0" aria-label="Home">
+        <span class="dock-label">Home</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/>
+        </svg>
+      </div>
+
+      <div class="dock-item" role="button" tabindex="0" aria-label="Products">
+        <span class="dock-label">Products</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+        </svg>
+      </div>
+
+      <div class="dock-item" role="button" tabindex="0" aria-label="Components">
+        <span class="dock-label">Components</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5.5 8.5 9 12l-3.5 3.5L2 12l3.5-3.5z"/><path d="m12 2 3.5 3.5L12 9 8.5 5.5 12 2z"/><path d="M18.5 8.5 22 12l-3.5 3.5L15 12l3.5-3.5z"/><path d="m12 15 3.5 3.5L12 22l-3.5-3.5L12 15z"/>
+        </svg>
+      </div>
+
+      <div class="dock-item" role="button" tabindex="0" aria-label="Activity">
+        <span class="dock-label">Activity</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+
+      <div class="dock-item" role="button" tabindex="0" aria-label="Change Log">
+        <span class="dock-label">Change Log</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </div>
+
+      <div class="dock-item" role="button" tabindex="0" aria-label="Email">
+        <span class="dock-label">Email</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+
+      <div class="dock-item" role="button" tabindex="0" aria-label="Theme">
+        <span class="dock-label">Theme</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><path d="M12 8a4 4 0 0 0 0 8" opacity=".4"/>
+        </svg>
+      </div>
+
+    </div>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
