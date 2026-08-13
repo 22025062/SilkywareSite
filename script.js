@@ -1,4 +1,3 @@
-// Pricing Configuration
 const PRICING = {
   starterMonth: 9.99,
   starterAnnual: 7.49,
@@ -18,10 +17,15 @@ const planCards = document.querySelectorAll('.plan-card');
 const starterFlow = document.getElementById('starter-flow');
 const proFlow = document.getElementById('pro-flow');
 
-// Format options matching NumberFlow currency/decimal options
+// Configure formatting options
 const formatOptions = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+
+// Initialize initial JS numeric properties
 starterFlow.format = formatOptions;
 proFlow.format = formatOptions;
+
+starterFlow.value = PRICING.starterMonth;
+proFlow.value = PRICING.proMonth;
 
 function setPeriod(index) {
   periodIndex = index;
@@ -30,18 +34,17 @@ function setPeriod(index) {
   const newStarter = periodIndex === 0 ? PRICING.starterMonth : PRICING.starterAnnual;
   const newPro = periodIndex === 0 ? PRICING.proMonth : PRICING.proAnnual;
 
-  // Updating the attribute directly triggers native NumberFlow spring animation!
-  starterFlow.setAttribute('value', newStarter);
-  proFlow.setAttribute('value', newPro);
+  // KEY FIX: Assigning to the numeric .value property (NOT setAttribute)
+  // triggers NumberFlow's smooth spring & digit roll animation!
+  starterFlow.value = newStarter;
+  proFlow.value = newPro;
 }
 
 function setActivePlan(index) {
   activeIndex = index;
 
-  // Move black active outline box cleanly
   activeCardOutline.style.transform = `translateY(${activeIndex * 88 + 12 * activeIndex}px)`;
 
-  // Update selection radio styling & prevent color bleed under active card
   planCards.forEach((card, idx) => {
     const border = card.querySelector('.radio-border');
     const dot = card.querySelector('.radio-dot');

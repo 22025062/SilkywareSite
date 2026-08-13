@@ -8,14 +8,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Native NumberFlow Web Component CDN Import -->
+  <!-- Native NumberFlow Web Component Import -->
   <script type="module">
-    import 'https://esm.sh/number-flow';
+    import 'https://cdn.jsdelivr.net/npm/number-flow/+esm';
   </script>
 </head>
 <body class="bg-white min-h-screen flex items-center justify-end p-8">
 
-  <!-- Main Container (Right Aligned) -->
+  <!-- Container Positioned Right -->
   <div class="border-2 rounded-[32px] p-3 shadow-md max-w-sm w-full flex flex-col items-center gap-3 bg-white">
     
     <!-- Period Toggle -->
@@ -75,8 +75,7 @@
           <p class="text-slate-500 text-md flex items-center">
             <span class="text-black font-medium flex items-center">
               $&nbsp;
-              <!-- Native custom <number-flow> element -->
-              <number-flow id="starter-flow" value="9.99" class="text-black font-medium"></number-flow>
+              <number-flow id="starter-flow" class="text-black font-medium"></number-flow>
             </span>
             &nbsp;/month
           </p>
@@ -96,8 +95,7 @@
           <p class="text-slate-500 text-md flex items-center">
             <span class="text-black font-medium flex items-center">
               $&nbsp;
-              <!-- Native custom <number-flow> element -->
-              <number-flow id="pro-flow" value="19.99" class="text-black font-medium"></number-flow>
+              <number-flow id="pro-flow" class="text-black font-medium"></number-flow>
             </span>
             &nbsp;/month
           </p>
