@@ -1,4 +1,4 @@
-/* Helper fallback styles for custom size utility classes */
+/* Helper size utilities */
 .size-6 {
   width: 1.5rem;
   height: 1.5rem;
@@ -7,4 +7,16 @@
 .size-3 {
   width: 0.75rem;
   height: 0.75rem;
+}
+
+/* Number flow animation styling */
+.price-num {
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  will-change: transform, opacity;
+}
+
+.price-num.price-changing {
+  opacity: 0;
+  transform: translateY(-6px);
 }

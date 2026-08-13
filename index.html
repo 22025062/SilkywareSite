@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing Component</title>
-  <!-- Tailwind CSS CDN for utility classes matching the JSX snippet -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -29,7 +29,8 @@
       </button>
       <div
         id="period-indicator"
-        class="p-1.5 flex items-center justify-center absolute inset-0 w-1/2 z-10 transition-transform duration-300"
+        class="p-1.5 flex items-center justify-center absolute inset-0 w-1/2 z-10"
+        style="transform: translateX(0%); transition: transform 0.3s;"
       >
         <div class="bg-white shadow-sm rounded-full w-full h-full"></div>
       </div>
@@ -40,7 +41,7 @@
       
       <!-- Option 0: Free -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 border-transparent p-4 rounded-2xl z-10 transition-colors duration-300"
         data-index="0"
       >
         <div class="flex flex-col items-start">
@@ -49,14 +50,14 @@
             <span class="text-black font-medium">$0.00</span>/month
           </p>
         </div>
-        <div class="radio-border border-2 border-black size-6 rounded-full mt-0.5 p-1 flex items-center justify-center transition-colors duration-300">
-          <div class="radio-dot size-3 bg-black rounded-full opacity-100 transition-opacity duration-300"></div>
+        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #000; transition: border-color 0.3s;">
+          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 1; transition: opacity 0.3s;"></div>
         </div>
       </div>
 
       <!-- Option 1: Starter -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10 transition-colors duration-300"
         data-index="1"
       >
         <div class="flex flex-col items-start">
@@ -68,39 +69,40 @@
           </p>
           <p class="text-slate-500 text-md flex">
             <span class="text-black font-medium flex items-center">
-              $<span id="starter-price" class="text-black font-medium ml-1">9.99</span>
+              $&nbsp;<span id="starter-price" class="price-num text-black font-medium">9.99</span>
             </span>
             /month
           </p>
         </div>
-        <div class="radio-border border-2 border-slate-500 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center transition-colors duration-300">
-          <div class="radio-dot size-3 bg-black rounded-full opacity-0 transition-opacity duration-300"></div>
+        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #64748b; transition: border-color 0.3s;">
+          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 0; transition: opacity 0.3s;"></div>
         </div>
       </div>
 
       <!-- Option 2: Pro -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10 transition-colors duration-300"
         data-index="2"
       >
         <div class="flex flex-col items-start">
           <p class="font-semibold text-xl text-gray-950">Pro</p>
           <p class="text-slate-500 text-md flex">
             <span class="text-black font-medium flex items-center">
-              $<span id="pro-price" class="text-black font-medium ml-1">19.99</span>
+              $&nbsp;<span id="pro-price" class="price-num text-black font-medium">19.99</span>
             </span>
             /month
           </p>
         </div>
-        <div class="radio-border border-2 border-slate-500 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center transition-colors duration-300">
-          <div class="radio-dot size-3 bg-black rounded-full opacity-0 transition-opacity duration-300"></div>
+        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #64748b; transition: border-color 0.3s;">
+          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 0; transition: opacity 0.3s;"></div>
         </div>
       </div>
 
       <!-- Active Outline Indicator -->
       <div
         id="active-card-outline"
-        class="w-full h-[88px] absolute top-0 border-[3px] border-black rounded-2xl pointer-events-none transition-transform duration-300"
+        class="w-full h-[88px] absolute top-0 border-[3px] border-black rounded-2xl pointer-events-none z-0"
+        style="transform: translateY(0px); transition: transform 0.3s;"
       ></div>
     </div>
 
