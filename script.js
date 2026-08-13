@@ -1,4 +1,4 @@
-// 1. Native <number-flow> Web Component implementation for digit scrolling
+// 1. Native <number-flow> Web Component implementation
 class NativeNumberFlow extends HTMLElement {
   constructor() {
     super();
@@ -18,7 +18,8 @@ class NativeNumberFlow extends HTMLElement {
         .digit-col {
           display: inline-flex;
           flex-direction: column;
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          /* Duration increased to 0.8s for a slower, smoother roll */
+          transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
           height: 1.2em;
         }
         .digit-item {
@@ -137,11 +138,11 @@ function setActivePlan(index) {
     const dot = card.querySelector('.radio-dot');
 
     if (idx === activeIndex) {
-      card.style.borderColor = 'transparent'; // Fades gray out to transparent
+      card.style.borderColor = 'transparent';
       border.style.borderColor = '#000';
       dot.style.opacity = '1';
     } else {
-      card.style.borderColor = '#9ca3af'; // Fades gray back in smoothly
+      card.style.borderColor = '#9ca3af';
       border.style.borderColor = '#64748b';
       dot.style.opacity = '0';
     }
