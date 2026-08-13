@@ -4,18 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing Component</title>
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS CDN for visual utility styles -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Native NumberFlow Web Component Import -->
-  <script type="module">
-    import 'https://cdn.jsdelivr.net/npm/number-flow/+esm';
-  </script>
 </head>
 <body class="bg-white min-h-screen flex items-center justify-end p-8">
 
-  <!-- Container Positioned Right -->
+  <!-- Right-Aligned Container -->
   <div class="border-2 rounded-[32px] p-3 shadow-md max-w-sm w-full flex flex-col items-center gap-3 bg-white">
     
     <!-- Period Toggle -->
@@ -35,7 +30,7 @@
       <div
         id="period-indicator"
         class="p-1.5 flex items-center justify-center absolute inset-0 w-1/2 z-10"
-        style="transform: translateX(0%); transition: transform 0.3s;"
+        style="transform: translateX(0%); transition: transform 0.3s ease;"
       >
         <div class="bg-white shadow-sm rounded-full w-full h-full"></div>
       </div>
@@ -108,8 +103,8 @@
       <!-- Active Outline Indicator -->
       <div
         id="active-card-outline"
-        class="w-full h-[88px] absolute top-0 border-[3px] border-black rounded-2xl pointer-events-none z-0"
-        style="transform: translateY(0px); transition: transform 0.3s;"
+        class="w-full h-[88px] absolute top-0 border-[3px] border-black rounded-2xl pointer-events-none z-20"
+        style="transform: translateY(0px); transition: transform 0.3s ease;"
       ></div>
     </div>
 

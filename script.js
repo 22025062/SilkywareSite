@@ -1,3 +1,99 @@
+// 1. Native <number-flow> Web Component implementation
+class NativeNumberFlow extends HTMLElement {
+  constructor() {
+    super();
+    this._value = 0;
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          display: inline-flex;
+          align-items: center;
+          font-variant-numeric: tabular-nums;
+          overflow: hidden;
+          height: 1.2em;
+          line-height: 1.2em;
+          vertical-align: middle;
+        }
+        .digit-col {
+          display: inline-flex;
+          flex-direction: column;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          height: 1.2em;
+        }
+        .digit-item {
+          height: 1.2em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .symbol {
+          display: inline-flex;
+          align-items: center;
+          height: 1.2em;
+        }
+      </style>
+      <div id="container" style="display: inline-flex; align-items: center; height: 1.2em;"></div>
+    `;
+  }
+
+  set value(val) {
+    const numVal = typeof val === 'number' ? val : parseFloat(val);
+    if (isNaN(numVal)) return;
+    this._value = numVal;
+    this.render();
+  }
+
+  get value() {
+    return this._value;
+  }
+
+  render() {
+    const str = this._value.toFixed(2);
+    const container = this.shadowRoot.getElementById('container');
+    
+    // Build digit structure if column counts change
+    if (container.children.length !== str.length) {
+      container.innerHTML = '';
+      for (let char of str) {
+        if (/\d/.test(char)) {
+          const col = document.createElement('div');
+          col.className = 'digit-col';
+          for (let i = 0; i <= 9; i++) {
+            const item = document.createElement('div');
+            item.className = 'digit-item';
+            item.textContent = i;
+            col.appendChild(item);
+          }
+          container.appendChild(col);
+        } else {
+          const sym = document.createElement('div');
+          sym.className = 'symbol';
+          sym.textContent = char;
+          container.appendChild(sym);
+        }
+      }
+    }
+
+    // Scroll each individual digit column smoothly
+    const children = container.children;
+    for (let i = 0; i < str.length; i++) {
+      const char = str[i];
+      const child = children[i];
+      if (/\d/.test(char)) {
+        const digit = parseInt(char, 10);
+        child.style.transform = `translateY(-${digit * 1.2}em)`;
+      }
+    }
+  }
+}
+
+// Register element natively
+if (!customElements.get('number-flow')) {
+  customElements.define('number-flow', NativeNumberFlow);
+}
+
+// 2. Pricing Configuration & App Logic
 const PRICING = {
   starterMonth: 9.99,
   starterAnnual: 7.49,
@@ -17,13 +113,7 @@ const planCards = document.querySelectorAll('.plan-card');
 const starterFlow = document.getElementById('starter-flow');
 const proFlow = document.getElementById('pro-flow');
 
-// Configure formatting options
-const formatOptions = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
-
-// Initialize initial JS numeric properties
-starterFlow.format = formatOptions;
-proFlow.format = formatOptions;
-
+// Initial setup
 starterFlow.value = PRICING.starterMonth;
 proFlow.value = PRICING.proMonth;
 
@@ -34,8 +124,7 @@ function setPeriod(index) {
   const newStarter = periodIndex === 0 ? PRICING.starterMonth : PRICING.starterAnnual;
   const newPro = periodIndex === 0 ? PRICING.proMonth : PRICING.proAnnual;
 
-  // KEY FIX: Assigning to the numeric .value property (NOT setAttribute)
-  // triggers NumberFlow's smooth spring & digit roll animation!
+  // Smooth digit scroll trigger
   starterFlow.value = newStarter;
   proFlow.value = newPro;
 }
@@ -43,8 +132,10 @@ function setPeriod(index) {
 function setActivePlan(index) {
   activeIndex = index;
 
+  // Move black outline
   activeCardOutline.style.transform = `translateY(${activeIndex * 88 + 12 * activeIndex}px)`;
 
+  // Hide underlying gray borders on active card to eliminate color bleed
   planCards.forEach((card, idx) => {
     const border = card.querySelector('.radio-border');
     const dot = card.querySelector('.radio-dot');
