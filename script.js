@@ -1,4 +1,4 @@
-// 1. Native <number-flow> Web Component implementation
+// 1. Native <number-flow> Web Component implementation for digit scrolling
 class NativeNumberFlow extends HTMLElement {
   constructor() {
     super();
@@ -52,7 +52,6 @@ class NativeNumberFlow extends HTMLElement {
     const str = this._value.toFixed(2);
     const container = this.shadowRoot.getElementById('container');
     
-    // Build digit structure if column counts change
     if (container.children.length !== str.length) {
       container.innerHTML = '';
       for (let char of str) {
@@ -75,7 +74,6 @@ class NativeNumberFlow extends HTMLElement {
       }
     }
 
-    // Scroll each individual digit column smoothly
     const children = container.children;
     for (let i = 0; i < str.length; i++) {
       const char = str[i];
@@ -88,12 +86,11 @@ class NativeNumberFlow extends HTMLElement {
   }
 }
 
-// Register element natively
 if (!customElements.get('number-flow')) {
   customElements.define('number-flow', NativeNumberFlow);
 }
 
-// 2. Pricing Configuration & App Logic
+// 2. Pricing Logic & Smooth Border Fading
 const PRICING = {
   starterMonth: 9.99,
   starterAnnual: 7.49,
@@ -113,7 +110,7 @@ const planCards = document.querySelectorAll('.plan-card');
 const starterFlow = document.getElementById('starter-flow');
 const proFlow = document.getElementById('pro-flow');
 
-// Initial setup
+// Initial Setup
 starterFlow.value = PRICING.starterMonth;
 proFlow.value = PRICING.proMonth;
 
@@ -124,7 +121,6 @@ function setPeriod(index) {
   const newStarter = periodIndex === 0 ? PRICING.starterMonth : PRICING.starterAnnual;
   const newPro = periodIndex === 0 ? PRICING.proMonth : PRICING.proAnnual;
 
-  // Smooth digit scroll trigger
   starterFlow.value = newStarter;
   proFlow.value = newPro;
 }
@@ -132,22 +128,20 @@ function setPeriod(index) {
 function setActivePlan(index) {
   activeIndex = index;
 
-  // Move black outline
+  // Move black outline indicator
   activeCardOutline.style.transform = `translateY(${activeIndex * 88 + 12 * activeIndex}px)`;
 
-  // Hide underlying gray borders on active card to eliminate color bleed
+  // Fade gray border in and out smoothly
   planCards.forEach((card, idx) => {
     const border = card.querySelector('.radio-border');
     const dot = card.querySelector('.radio-dot');
 
     if (idx === activeIndex) {
-      card.classList.remove('border-gray-400');
-      card.classList.add('border-transparent');
+      card.style.borderColor = 'transparent'; // Fades gray out to transparent
       border.style.borderColor = '#000';
       dot.style.opacity = '1';
     } else {
-      card.classList.remove('border-transparent');
-      card.classList.add('border-gray-400');
+      card.style.borderColor = '#9ca3af'; // Fades gray back in smoothly
       border.style.borderColor = '#64748b';
       dot.style.opacity = '0';
     }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing Component</title>
-  <!-- Tailwind CSS CDN for visual utility styles -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -41,7 +41,8 @@
       
       <!-- Option 0: Free -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-transparent p-4 rounded-2xl z-10"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 p-4 rounded-2xl z-10"
+        style="border-color: transparent; transition: border-color 0.3s ease;"
         data-index="0"
       >
         <div class="flex flex-col items-start">
@@ -50,14 +51,15 @@
             <span class="text-black font-medium">$0.00</span>/month
           </p>
         </div>
-        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #000; transition: border-color 0.3s;">
-          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 1; transition: opacity 0.3s;"></div>
+        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #000; transition: border-color 0.3s ease;">
+          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 1; transition: opacity 0.3s ease;"></div>
         </div>
       </div>
 
       <!-- Option 1: Starter -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 p-4 rounded-2xl z-10"
+        style="border-color: #9ca3af; transition: border-color 0.3s ease;"
         data-index="1"
       >
         <div class="flex flex-col items-start">
@@ -75,14 +77,15 @@
             &nbsp;/month
           </p>
         </div>
-        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #64748b; transition: border-color 0.3s;">
-          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 0; transition: opacity 0.3s;"></div>
+        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #64748b; transition: border-color 0.3s ease;">
+          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 0; transition: opacity 0.3s ease;"></div>
         </div>
       </div>
 
       <!-- Option 2: Pro -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 p-4 rounded-2xl z-10"
+        style="border-color: #9ca3af; transition: border-color 0.3s ease;"
         data-index="2"
       >
         <div class="flex flex-col items-start">
@@ -95,8 +98,8 @@
             &nbsp;/month
           </p>
         </div>
-        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #64748b; transition: border-color 0.3s;">
-          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 0; transition: opacity 0.3s;"></div>
+        <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #64748b; transition: border-color 0.3s ease;">
+          <div class="radio-dot size-3 bg-black rounded-full" style="opacity: 0; transition: opacity 0.3s ease;"></div>
         </div>
       </div>
 
