@@ -1,0 +1,10 @@
+/* Helper fallback styles for custom size utility classes */
+.size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.size-3 {
+  width: 0.75rem;
+  height: 0.75rem;
+}
