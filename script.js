@@ -1,4 +1,4 @@
-// Pricing Config
+// Pricing Configuration
 const PRICING = {
   starterMonth: 9.99,
   starterAnnual: 7.49,
@@ -14,20 +14,14 @@ const btnYearly = document.getElementById('btn-yearly');
 const periodIndicator = document.getElementById('period-indicator');
 const activeCardOutline = document.getElementById('active-card-outline');
 const planCards = document.querySelectorAll('.plan-card');
-const starterPriceEl = document.getElementById('starter-price');
-const proPriceEl = document.getElementById('pro-price');
 
-// Animated price switcher to replicate NumberFlow smoothly
-function updatePriceWithAnimation(element, targetVal) {
-  if (parseFloat(element.textContent) === targetVal) return;
-  
-  element.classList.add('price-changing');
-  
-  setTimeout(() => {
-    element.textContent = targetVal.toFixed(2);
-    element.classList.remove('price-changing');
-  }, 150);
-}
+const starterFlow = document.getElementById('starter-flow');
+const proFlow = document.getElementById('pro-flow');
+
+// Format options matching NumberFlow currency/decimal options
+const formatOptions = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+starterFlow.format = formatOptions;
+proFlow.format = formatOptions;
 
 function setPeriod(index) {
   periodIndex = index;
@@ -36,17 +30,18 @@ function setPeriod(index) {
   const newStarter = periodIndex === 0 ? PRICING.starterMonth : PRICING.starterAnnual;
   const newPro = periodIndex === 0 ? PRICING.proMonth : PRICING.proAnnual;
 
-  updatePriceWithAnimation(starterPriceEl, newStarter);
-  updatePriceWithAnimation(proPriceEl, newPro);
+  // Updating the attribute directly triggers native NumberFlow spring animation!
+  starterFlow.setAttribute('value', newStarter);
+  proFlow.setAttribute('value', newPro);
 }
 
 function setActivePlan(index) {
   activeIndex = index;
 
-  // Move black outline indicator
+  // Move black active outline box cleanly
   activeCardOutline.style.transform = `translateY(${activeIndex * 88 + 12 * activeIndex}px)`;
 
-  // Update radios & remove gray border under active black outline to prevent color bleed
+  // Update selection radio styling & prevent color bleed under active card
   planCards.forEach((card, idx) => {
     const border = card.querySelector('.radio-border');
     const dot = card.querySelector('.radio-dot');

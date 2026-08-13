@@ -7,10 +7,15 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Native NumberFlow Web Component CDN Import -->
+  <script type="module">
+    import 'https://esm.sh/number-flow';
+  </script>
 </head>
 <body class="bg-white min-h-screen flex items-center justify-end p-8">
 
-  <!-- Container positioned on the right side -->
+  <!-- Main Container (Right Aligned) -->
   <div class="border-2 rounded-[32px] p-3 shadow-md max-w-sm w-full flex flex-col items-center gap-3 bg-white">
     
     <!-- Period Toggle -->
@@ -41,7 +46,7 @@
       
       <!-- Option 0: Free -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-transparent p-4 rounded-2xl z-10 transition-colors duration-300"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 border-transparent p-4 rounded-2xl z-10"
         data-index="0"
       >
         <div class="flex flex-col items-start">
@@ -57,7 +62,7 @@
 
       <!-- Option 1: Starter -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10 transition-colors duration-300"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10"
         data-index="1"
       >
         <div class="flex flex-col items-start">
@@ -67,11 +72,13 @@
               Popular
             </span>
           </p>
-          <p class="text-slate-500 text-md flex">
+          <p class="text-slate-500 text-md flex items-center">
             <span class="text-black font-medium flex items-center">
-              $&nbsp;<span id="starter-price" class="price-num text-black font-medium">9.99</span>
+              $&nbsp;
+              <!-- Native custom <number-flow> element -->
+              <number-flow id="starter-flow" value="9.99" class="text-black font-medium"></number-flow>
             </span>
-            /month
+            &nbsp;/month
           </p>
         </div>
         <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #64748b; transition: border-color 0.3s;">
@@ -81,16 +88,18 @@
 
       <!-- Option 2: Pro -->
       <div
-        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10 transition-colors duration-300"
+        class="plan-card w-full flex justify-between cursor-pointer border-2 border-gray-400 p-4 rounded-2xl z-10"
         data-index="2"
       >
         <div class="flex flex-col items-start">
           <p class="font-semibold text-xl text-gray-950">Pro</p>
-          <p class="text-slate-500 text-md flex">
+          <p class="text-slate-500 text-md flex items-center">
             <span class="text-black font-medium flex items-center">
-              $&nbsp;<span id="pro-price" class="price-num text-black font-medium">19.99</span>
+              $&nbsp;
+              <!-- Native custom <number-flow> element -->
+              <number-flow id="pro-flow" value="19.99" class="text-black font-medium"></number-flow>
             </span>
-            /month
+            &nbsp;/month
           </p>
         </div>
         <div class="radio-border border-2 size-6 rounded-full mt-0.5 p-1 flex items-center justify-center" style="border-color: #64748b; transition: border-color 0.3s;">
