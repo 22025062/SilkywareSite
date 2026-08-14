@@ -8,8 +8,36 @@
   height: 0.75rem;
 }
 
+/* --- Animated Gradient Background --- */
+#background-gradient-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: opacity 2s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity, transform;
+}
+
+#background-gradient-container.gradient-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#background-gradient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* --- Initial Loading Overlay & Blur Reveal Styles --- */
 #main-content {
+  position: relative;
+  z-index: 10;
   transition: filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);

@@ -159,20 +159,83 @@ planCards.forEach((card) => {
   });
 });
 
-// 3. Initial Loading Screen & Blur Reveal (3-Second Duration)
+// 3. Initial Loading Screen, Blur Reveal & Animated Gradient Background
 const loadingScreen = document.getElementById('loading-screen');
 const mainContent = document.getElementById('main-content');
+const gradientContainer = document.getElementById('background-gradient-container');
+const gradientElement = document.getElementById('background-gradient');
+
+// Animated Gradient Background Configuration (White base with grey & light-grey edges)
+const GRADIENT_CONFIG = {
+  startingGap: 125,
+  breathing: true,
+  gradientColors: [
+    "#ffffff", // 35% - Center white
+    "#ffffff", // 50% - Inner white
+    "#f1f5f9", // 60% - Very soft light slate grey
+    "#e2e8f0", // 70% - Light grey
+    "#cbd5e1", // 80% - Mid light grey
+    "#94a3b8", // 90% - Soft grey edge
+    "#64748b"  // 100% - Outer grey perimeter
+  ],
+  gradientStops: [35, 50, 60, 70, 80, 90, 100],
+  animationSpeed: 0.03,
+  breathingRange: 6,
+  topOffset: 0
+};
+
+function startGradientAnimation() {
+  if (!gradientElement) return;
+
+  let width = GRADIENT_CONFIG.startingGap;
+  let directionWidth = 1;
+  let animationFrameId;
+
+  const gradientStopsString = GRADIENT_CONFIG.gradientStops
+    .map((stop, index) => `${GRADIENT_CONFIG.gradientColors[index]} ${stop}%`)
+    .join(", ");
+
+  const animate = () => {
+    if (width >= GRADIENT_CONFIG.startingGap + GRADIENT_CONFIG.breathingRange) {
+      directionWidth = -1;
+    }
+    if (width <= GRADIENT_CONFIG.startingGap - GRADIENT_CONFIG.breathingRange) {
+      directionWidth = 1;
+    }
+
+    if (!GRADIENT_CONFIG.breathing) {
+      directionWidth = 0;
+    }
+
+    width += directionWidth * GRADIENT_CONFIG.animationSpeed;
+
+    const radialGradient = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 20%, ${gradientStopsString})`;
+    gradientElement.style.background = radialGradient;
+
+    animationFrameId = requestAnimationFrame(animate);
+  };
+
+  // Set initial gradient style and start loop
+  gradientElement.style.background = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 20%, ${gradientStopsString})`;
+  animationFrameId = requestAnimationFrame(animate);
+}
 
 if (loadingScreen && mainContent) {
   const LOADING_DURATION_MS = 3000;
 
   const startLoaderTimer = () => {
     setTimeout(() => {
-      // Initiate smooth fade-out and un-blur
+      // 1. Initiate smooth fade-out and un-blur
       loadingScreen.classList.add('loader-hidden');
       mainContent.classList.remove('content-blurred');
 
-      // Clean up after CSS transition ends
+      // 2. Start Animated Background entrance animation & breathing
+      if (gradientContainer) {
+        gradientContainer.classList.add('gradient-active');
+        startGradientAnimation();
+      }
+
+      // 3. Clean up loading screen after CSS transition ends
       const handleTransitionEnd = (e) => {
         if (e.target === loadingScreen && (e.propertyName === 'opacity' || e.propertyName === 'backdrop-filter')) {
           loadingScreen.style.display = 'none';
