@@ -158,3 +158,39 @@ planCards.forEach((card) => {
     setActivePlan(index);
   });
 });
+
+// 3. Initial Loading Screen & Blur Reveal (3-Second Duration)
+const loadingScreen = document.getElementById('loading-screen');
+const mainContent = document.getElementById('main-content');
+
+if (loadingScreen && mainContent) {
+  const LOADING_DURATION_MS = 3000;
+
+  const startLoaderTimer = () => {
+    setTimeout(() => {
+      // Initiate smooth fade-out and un-blur
+      loadingScreen.classList.add('loader-hidden');
+      mainContent.classList.remove('content-blurred');
+
+      // Clean up after CSS transition ends
+      const handleTransitionEnd = (e) => {
+        if (e.target === loadingScreen && (e.propertyName === 'opacity' || e.propertyName === 'backdrop-filter')) {
+          loadingScreen.style.display = 'none';
+          loadingScreen.removeEventListener('transitionend', handleTransitionEnd);
+        }
+      };
+      loadingScreen.addEventListener('transitionend', handleTransitionEnd);
+
+      // Safety fallback in case transitionend event is skipped
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 1000);
+    }, LOADING_DURATION_MS);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startLoaderTimer);
+  } else {
+    startLoaderTimer();
+  }
+}
