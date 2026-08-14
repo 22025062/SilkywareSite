@@ -167,20 +167,19 @@ const gradientElement = document.getElementById('background-gradient');
 
 // Animated Gradient Background Configuration (White base with grey & light-grey edges)
 const GRADIENT_CONFIG = {
-  startingGap: 125,
+  startingGap: 95,
   breathing: true,
   gradientColors: [
-    "#ffffff", // 35% - Center white
-    "#ffffff", // 50% - Inner white
-    "#f1f5f9", // 60% - Very soft light slate grey
-    "#e2e8f0", // 70% - Light grey
-    "#cbd5e1", // 80% - Mid light grey
-    "#94a3b8", // 90% - Soft grey edge
-    "#64748b"  // 100% - Outer grey perimeter
+    "#ffffff", // 25% - Center white
+    "#e5e7eb", // 45% - Light grey
+    "#d1d5db", // 60% - Soft mid grey
+    "#9ca3af", // 75% - Cool grey
+    "#6b7280", // 90% - Deep grey edge
+    "#374151"  // 100% - Outermost border edge
   ],
-  gradientStops: [35, 50, 60, 70, 80, 90, 100],
-  animationSpeed: 0.03,
-  breathingRange: 6,
+  gradientStops: [25, 45, 60, 75, 90, 100],
+  animationSpeed: 0.04,
+  breathingRange: 8,
   topOffset: 0
 };
 
@@ -209,14 +208,14 @@ function startGradientAnimation() {
 
     width += directionWidth * GRADIENT_CONFIG.animationSpeed;
 
-    const radialGradient = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 20%, ${gradientStopsString})`;
+    const radialGradient = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 35%, ${gradientStopsString})`;
     gradientElement.style.background = radialGradient;
 
     animationFrameId = requestAnimationFrame(animate);
   };
 
-  // Set initial gradient style and start loop
-  gradientElement.style.background = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 20%, ${gradientStopsString})`;
+  // Immediate first paint
+  gradientElement.style.background = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 35%, ${gradientStopsString})`;
   animationFrameId = requestAnimationFrame(animate);
 }
 
