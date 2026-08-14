@@ -159,66 +159,10 @@ planCards.forEach((card) => {
   });
 });
 
-// 3. Initial Loading Screen, Blur Reveal & Animated Gradient Background
+// 3. Initial Loading Screen & Aurora Background Fade-In (3-Second Duration)
 const loadingScreen = document.getElementById('loading-screen');
 const mainContent = document.getElementById('main-content');
-const gradientContainer = document.getElementById('background-gradient-container');
-const gradientElement = document.getElementById('background-gradient');
-
-// Animated Gradient Background Configuration (Black & Dark Grey Theme with White Core)
-const GRADIENT_CONFIG = {
-  startingGap: 110,
-  breathing: true,
-  gradientColors: [
-    "#ffffff", // 35% - Pure white core
-    "#ffffff", // 50% - Pure white inner
-    "#3f3f46", // 62% - Dark neutral grey
-    "#18181b", // 72% - Deep charcoal
-    "#000000", // 82% - Jet black
-    "#18181b", // 92% - Deep charcoal
-    "#000000"  // 100% - Pure black perimeter
-  ],
-  gradientStops: [35, 50, 62, 72, 82, 92, 100],
-  animationSpeed: 0.025,
-  breathingRange: 6,
-  topOffset: 0
-};
-
-function startGradientAnimation() {
-  if (!gradientElement) return;
-
-  let width = GRADIENT_CONFIG.startingGap;
-  let directionWidth = 1;
-  let animationFrameId;
-
-  const gradientStopsString = GRADIENT_CONFIG.gradientStops
-    .map((stop, index) => `${GRADIENT_CONFIG.gradientColors[index]} ${stop}%`)
-    .join(", ");
-
-  const animate = () => {
-    if (width >= GRADIENT_CONFIG.startingGap + GRADIENT_CONFIG.breathingRange) {
-      directionWidth = -1;
-    }
-    if (width <= GRADIENT_CONFIG.startingGap - GRADIENT_CONFIG.breathingRange) {
-      directionWidth = 1;
-    }
-
-    if (!GRADIENT_CONFIG.breathing) {
-      directionWidth = 0;
-    }
-
-    width += directionWidth * GRADIENT_CONFIG.animationSpeed;
-
-    const radialGradient = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 25%, ${gradientStopsString})`;
-    gradientElement.style.background = radialGradient;
-
-    animationFrameId = requestAnimationFrame(animate);
-  };
-
-  // Immediate first paint
-  gradientElement.style.background = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 25%, ${gradientStopsString})`;
-  animationFrameId = requestAnimationFrame(animate);
-}
+const auroraContainer = document.getElementById('aurora-background-container');
 
 if (loadingScreen && mainContent) {
   const LOADING_DURATION_MS = 3000;
@@ -229,10 +173,9 @@ if (loadingScreen && mainContent) {
       loadingScreen.classList.add('loader-hidden');
       mainContent.classList.remove('content-blurred');
 
-      // 2. Start Animated Background entrance animation & breathing
-      if (gradientContainer) {
-        gradientContainer.classList.add('gradient-active');
-        startGradientAnimation();
+      // 2. Trigger Aurora Background smooth fade-in
+      if (auroraContainer) {
+        auroraContainer.classList.add('aurora-active');
       }
 
       // 3. Clean up loading screen after CSS transition ends

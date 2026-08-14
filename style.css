@@ -8,31 +8,93 @@
   height: 0.75rem;
 }
 
-/* --- Animated Gradient Background --- */
-#background-gradient-container {
+/* --- Aurora Background (Aceternity UI) --- */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --transparent: transparent;
+  --blue-500: #3b82f6;
+  --indigo-300: #a5b4fc;
+  --blue-300: #93c5fd;
+  --violet-200: #ddd6fe;
+  --blue-400: #60a5fa;
+
+  --white-gradient: repeating-linear-gradient(
+    100deg,
+    var(--white) 0%,
+    var(--white) 7%,
+    var(--transparent) 10%,
+    var(--transparent) 12%,
+    var(--white) 16%
+  );
+  --dark-gradient: repeating-linear-gradient(
+    100deg,
+    var(--black) 0%,
+    var(--black) 7%,
+    var(--transparent) 10%,
+    var(--transparent) 12%,
+    var(--black) 16%
+  );
+  --aurora: repeating-linear-gradient(
+    100deg,
+    var(--blue-500) 10%,
+    var(--indigo-300) 15%,
+    var(--blue-300) 20%,
+    var(--violet-200) 25%,
+    var(--blue-400) 30%
+  );
+}
+
+#aurora-background-container {
   position: fixed;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  transform: scale(1.4);
-  transition: opacity 1.8s cubic-bezier(0.25, 0.1, 0.25, 1),
-              transform 1.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-  will-change: opacity, transform;
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
 }
 
-#background-gradient-container.gradient-active {
+#aurora-background-container.aurora-active {
   opacity: 1;
-  transform: scale(1);
 }
 
-#background-gradient {
+.aurora-layer {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+  background-image: var(--white-gradient), var(--aurora);
+  background-size: 300%, 200%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(10px) invert(1);
+  opacity: 0.5;
+  pointer-events: none;
+  will-change: transform;
+  mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
+}
+
+.aurora-layer::after {
+  content: "";
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(110% 110% at 50% 25%, #ffffff 35%, #ffffff 50%, #3f3f46 62%, #18181b 72%, #000000 82%, #18181b 92%, #000000 100%);
+  background-image: var(--white-gradient), var(--aurora);
+  background-size: 200%, 100%;
+  background-attachment: fixed;
+  mix-blend-mode: difference;
+  animation: animate-aurora 60s linear infinite;
+}
+
+@keyframes animate-aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
 }
 
 /* --- Initial Loading Overlay & Blur Reveal Styles --- */
