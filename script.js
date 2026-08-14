@@ -165,22 +165,22 @@ const mainContent = document.getElementById('main-content');
 const gradientContainer = document.getElementById('background-gradient-container');
 const gradientElement = document.getElementById('background-gradient');
 
-// Animated Gradient Background Configuration (Silver, Slate & Ice Chrome Aesthetic)
+// Animated Gradient Background Configuration (Black & Dark Grey Theme with White Core)
 const GRADIENT_CONFIG = {
-  startingGap: 105,
+  startingGap: 110,
   breathing: true,
   gradientColors: [
     "#ffffff", // 35% - Pure white core
-    "#e0f2fe", // 50% - Luminous ice pearl
-    "#cbd5e1", // 60% - Polished platinum silver
-    "#93c5fd", // 70% - Cool ice blue reflex
-    "#94a3b8", // 80% - Slate chrome
-    "#38bdf8", // 90% - Electric ice highlight
-    "#64748b"  // 100% - Cool chrome perimeter
+    "#ffffff", // 50% - Pure white inner
+    "#3f3f46", // 62% - Dark neutral grey
+    "#18181b", // 72% - Deep charcoal
+    "#000000", // 82% - Jet black
+    "#18181b", // 92% - Deep charcoal
+    "#000000"  // 100% - Pure black perimeter
   ],
-  gradientStops: [35, 50, 60, 70, 80, 90, 100],
+  gradientStops: [35, 50, 62, 72, 82, 92, 100],
   animationSpeed: 0.025,
-  breathingRange: 8,
+  breathingRange: 6,
   topOffset: 0
 };
 
