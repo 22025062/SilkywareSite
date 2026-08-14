@@ -165,20 +165,21 @@ const mainContent = document.getElementById('main-content');
 const gradientContainer = document.getElementById('background-gradient-container');
 const gradientElement = document.getElementById('background-gradient');
 
-// Animated Gradient Background Configuration (White base with grey & light-grey edges)
+// Animated Gradient Background Configuration (Silver, Slate & Ice Chrome Aesthetic)
 const GRADIENT_CONFIG = {
-  startingGap: 95,
+  startingGap: 105,
   breathing: true,
   gradientColors: [
-    "#ffffff", // 25% - Center white
-    "#e5e7eb", // 45% - Light grey
-    "#d1d5db", // 60% - Soft mid grey
-    "#9ca3af", // 75% - Cool grey
-    "#6b7280", // 90% - Deep grey edge
-    "#374151"  // 100% - Outermost border edge
+    "#ffffff", // 35% - Pure white core
+    "#e0f2fe", // 50% - Luminous ice pearl
+    "#cbd5e1", // 60% - Polished platinum silver
+    "#93c5fd", // 70% - Cool ice blue reflex
+    "#94a3b8", // 80% - Slate chrome
+    "#38bdf8", // 90% - Electric ice highlight
+    "#64748b"  // 100% - Cool chrome perimeter
   ],
-  gradientStops: [25, 45, 60, 75, 90, 100],
-  animationSpeed: 0.04,
+  gradientStops: [35, 50, 60, 70, 80, 90, 100],
+  animationSpeed: 0.025,
   breathingRange: 8,
   topOffset: 0
 };
@@ -208,14 +209,14 @@ function startGradientAnimation() {
 
     width += directionWidth * GRADIENT_CONFIG.animationSpeed;
 
-    const radialGradient = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 35%, ${gradientStopsString})`;
+    const radialGradient = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 25%, ${gradientStopsString})`;
     gradientElement.style.background = radialGradient;
 
     animationFrameId = requestAnimationFrame(animate);
   };
 
   // Immediate first paint
-  gradientElement.style.background = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 35%, ${gradientStopsString})`;
+  gradientElement.style.background = `radial-gradient(${width}% ${width + GRADIENT_CONFIG.topOffset}% at 50% 25%, ${gradientStopsString})`;
   animationFrameId = requestAnimationFrame(animate);
 }
 
